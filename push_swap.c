@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kenz <kenz@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: klopez <klopez@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 04:01:02 by kenz              #+#    #+#             */
-/*   Updated: 2024/02/24 05:55:12 by kenz             ###   ########.fr       */
+/*   Updated: 2024/02/24 18:12:44 by klopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,15 @@ int main(int ac, char **av)
 
     data.lsta = NULL;
     data.lstb = NULL;
+    char **tab;
     if (ac > 1)
     {
         //check_args_value(av, ac);
         init_data(&data);
         data.lsta = init_lst_a(av, ac, &data);
         print_all_lst(data.lsta, data.lstb);
-        pb(&data);
-        print_all_lst(data.lsta, data.lstb);
-        rb(&data);
-        print_all_lst(data.lsta, data.lstb);
-        rr(&data);
-        print_all_lst(data.lsta, data.lstb);
+        tab = init_tab(av, ac, &data);
+        check_argv(tab);
     
 
 

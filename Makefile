@@ -4,7 +4,8 @@ CFLAGS = -Wall -Wextra -g3
 
 NAME = push_swap
 
-SRCS = push_swap.c init.c swap_push_instructions.c reverse_instructions.c r_reverse_instructions.c args_error.c utils.c lst_utils.c
+SRCS = push_swap.c init.c swap_push_instructions.c reverse_instructions.c r_reverse_instructions.c args_error.c utils.c lst_utils.c \
+check_args.c
 
 OBJ = $(SRCS:.c=.o)
 

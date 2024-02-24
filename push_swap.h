@@ -60,6 +60,8 @@ void    rr(t_data *data);
 void    rra(t_data *data, t_lst *lsta);
 void    rrb(t_data *data, t_lst *lstb);
 void    rrr(t_data *data, t_lst *lsta, t_lst *lstb);
+void    check_argv(char **tab);
+char    **init_tab(char **av, int ac, t_data *data);
 
 
 
