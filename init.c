@@ -6,43 +6,48 @@
 /*   By: kenz <kenz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 04:33:38 by kenz              #+#    #+#             */
-/*   Updated: 2024/02/22 03:50:39 by kenz             ###   ########.fr       */
+/*   Updated: 2024/02/24 05:55:58 by kenz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_lst    *init_lst_a(char **av, int ac)
+
+void     init_data(t_data *data)
+{
+    data->utils.len_a = 0;
+    data->utils.len_b = 0;
+    data->utils.use_sa = 0;
+    data->utils.use_sb = 0;
+    data->utils.use_ra = 0;
+    data->utils.use_rb = 0;
+    data->utils.use_rra = 0;
+    data->utils.use_rrb = 0;
+}
+t_lst    *init_lst_a(char **av, int ac, t_data *data)
 {
     int i;
+    int j;
     int nb;
     t_lst *temp;
+    char **tab;
 
-    i = 0;
+    i = 1;
     temp = NULL;
-    if (ac == 2)
+    while (i < ac)
     {
-        av = ft_split(av[1], ' ');
-        i = -1;
+        tab = ft_split(av[i], ' ');
+        j = -1;
+        while(tab[++j])
+        {
+            nb = ft_atoi(tab[j]);
+            temp = push_back(temp, nb);
+            data->utils.len_a++;
+        }
+        freetab(tab);
+        i++;
     }
-    while(av[++i])
-    {
-        nb = ft_atoi(av[i]);
-        temp = push_front(temp, nb);
-    }
+    printf("len = %d\n", data->utils.len_a);
     return(temp);
 }
-
-t_lst   *push_front(t_lst *lst, int nb)
-{
-    t_lst *node;
-
-    node = malloc(sizeof(*node));
-
-    node->nb = nb;
-    node->next = lst;
-    return (node);
-}
-
-
 

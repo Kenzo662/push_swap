@@ -6,7 +6,7 @@
 /*   By: kenz <kenz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 01:46:00 by kenz              #+#    #+#             */
-/*   Updated: 2024/02/22 16:01:42 by kenz             ###   ########.fr       */
+/*   Updated: 2024/02/24 05:49:30 by kenz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,7 @@ void    print_all_lst(t_lst *lsta, t_lst *lstb)
 {
     ft_printf("<------------------------------------>\n");
     if (!lsta)
-        {
             ft_printf("La liste [A] est vide, rien a afficher\n");
-        }
     else 
         {
             ft_printf("Liste [A] :\n");
@@ -55,4 +53,14 @@ void    print_all_lst(t_lst *lsta, t_lst *lstb)
         lstb = lstb->next;
     }
     ft_printf("<------------------------------------>\n");
+}
+
+void    freetab(char **tab)
+{
+    int i;
+
+    i = -1;
+    while (tab[++i])
+        free(tab[i]);
+    free(tab);
 }
