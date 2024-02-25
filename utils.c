@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kenz <kenz@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: klopez <klopez@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 01:46:00 by kenz              #+#    #+#             */
-/*   Updated: 2024/02/24 05:49:30 by kenz             ###   ########.fr       */
+/*   Updated: 2024/02/25 18:54:05 by klopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,18 @@ void    print_lst(t_lst *lst)
         lst = lst->next;
     }
 }
+
+void    print_target(t_lst *lsta)
+{
+    if (!lsta)
+        return ;
+    while (lsta)
+    {
+        printf("target = %d\n", lsta->target);
+        lsta = lsta->next;
+    }
+}
+
 
 void    print_all_lst(t_lst *lsta, t_lst *lstb)
 {

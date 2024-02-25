@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   algorithm.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kenz <kenz@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: klopez <klopez@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 00:17:03 by kenz              #+#    #+#             */
-/*   Updated: 2024/02/25 06:06:56 by kenz             ###   ########.fr       */
+/*   Updated: 2024/02/25 20:04:00 by klopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@ void    algorithm(t_data *data)
         pb(data);
         pb(data);
         find_min_and_max(data);
-        find_target(data, data->lstb, data->lsta->next->nb);
+        find_target(data, data->lstb, data->lsta->nb);
+        data->lsta = define_target(data, data->lsta);
+        print_target(data->lsta);
     }
     else
         ft_printf("non :d");
@@ -82,11 +84,24 @@ int    find_target(t_data *data, t_lst *lstb, int nb)
         i++;
     }
     target = tab[0];
-    printf ("target = %d\n", target);
     return (free(tab) , target);
 }
 
-void    find_pushcost(t_data *data, int nb, int target)
+t_lst    *define_target(t_data *data, t_lst *lsta)
 {
-    
+    if (!lsta || !data->lsta)
+        return NULL;
+    t_lst *temp;
+    int i;
+
+    temp = lsta;
+    i = 0;
+    while (temp)
+    {
+        i++;
+        temp->pos = i;
+        temp->target = find_target(data, data->lstb, temp->nb);
+        temp = temp->next;
+    }
+    return (lsta);
 }

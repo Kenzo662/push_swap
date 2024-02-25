@@ -12,6 +12,8 @@
 typedef struct s_lst
 {
     int nb;
+    int target;
+    int pos;
     struct s_lst  *next;
 }               t_lst;
 
@@ -46,6 +48,7 @@ void    check_argv(char **tab);
 void    check_av_char(char **tab);
 void    print_lst(t_lst *lst);
 void    print_all_lst(t_lst *lsta, t_lst *lstb);
+void    print_target(t_lst *lsta);
 t_lst   *push_front(t_lst *lst, int nb);
 t_lst   *push_back(t_lst *lst, int nb);
 t_lst   *pop_front(t_lst *lst);
@@ -66,7 +69,7 @@ void    rrr(t_data *data, t_lst *lsta, t_lst *lstb);
 void    algorithm(t_data *data);
 void    find_min_and_max(t_data *data);
 int    find_target(t_data *data, t_lst *lstb, int nb);
-
+t_lst    *define_target(t_data *data, t_lst *lsta);
 
 
 #endif
