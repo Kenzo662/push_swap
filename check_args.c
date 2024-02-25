@@ -3,42 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   check_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: klopez <klopez@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kenz <kenz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 16:27:17 by klopez            #+#    #+#             */
-/*   Updated: 2024/02/24 18:32:47 by klopez           ###   ########.fr       */
+/*   Updated: 2024/02/24 23:41:15 by kenz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-char    **init_tab(char **av, int ac, t_data *data)
-{
-    int i;
-    int j;
-    int k;
-    char **newtab;
-    char **tab;
-
-    i = 1;
-    k = 0;
-    newtab = ft_calloc(data->utils.len_a + 1, sizeof(char *));
-    while (i < ac)
-    {
-        tab = ft_split(av[i], ' ');
-        j = 0;
-        while(tab[j])
-        {
-            printf("tabj = %s\n", tab[j]);
-            newtab[k] = ft_strdup(tab[j]);
-            k++;
-            j++;
-        }
-        freetab(tab);
-        i++;
-    }
-    return (newtab);
-}
 
 void    check_argv(char **tab)
 {
@@ -49,11 +21,9 @@ void    check_argv(char **tab)
     j = 1;
     while(tab[++i])
     {
-        printf("tab i = %s\n", tab[i]);
         j = i + 1;
         while (tab[j])
         {
-            printf("tab j = %s\n", tab[j]);
             if (ft_strcmp(tab[i], tab[j]) == 0)
                 {
                     ft_printf("Two numbers have the same value, please send a valid list!\n");
@@ -62,4 +32,41 @@ void    check_argv(char **tab)
             j++;
         }
     }
+    check_av_char(tab);
+}
+
+void    check_av_char(char **tab)
+{
+    int i;
+    int j;
+
+    i = -1;
+    j = 0;
+    while (tab[++i])
+    {
+        j = 0;
+        while(tab[i][j])
+        {
+            if (ft_isdigit(tab[i][j]) == 0)
+            {
+                ft_printf("Wrong arguments, please send a valid list!\n");
+                exit (0);
+            }
+            j++;
+        }
+    }
+}
+
+int	ft_strcmp(char *s1, char *s2)
+{
+	int	i;
+
+	i = 0;
+	while (s1[i] || s2[i])
+	{
+		if (s1[i] != s2[i])
+			return (s1[i] - s2[i]);
+		i++;
+	}
+	return (0);
 }

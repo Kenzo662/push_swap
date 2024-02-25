@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: klopez <klopez@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kenz <kenz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 04:33:38 by kenz              #+#    #+#             */
-/*   Updated: 2024/02/24 17:16:42 by klopez           ###   ########.fr       */
+/*   Updated: 2024/02/25 01:19:02 by kenz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ void     init_data(t_data *data)
     data->utils.use_rb = 0;
     data->utils.use_rra = 0;
     data->utils.use_rrb = 0;
+    data->utils.min = 0;
+    data->utils.max = 0;
 }
 t_lst    *init_lst_a(char **av, int ac, t_data *data)
 {
@@ -49,5 +51,32 @@ t_lst    *init_lst_a(char **av, int ac, t_data *data)
     }
     printf("len = %d\n", data->utils.len_a);
     return(temp);
+}
+
+char    **init_tab(char **av, int ac, t_data *data)
+{
+    int i;
+    int j;
+    int k;
+    char **newtab;
+    char **tab;
+
+    i = 1;
+    k = 0;
+    newtab = ft_calloc(data->utils.len_a + 1, sizeof(char *));
+    while (i < ac)
+    {
+        tab = ft_split(av[i], ' ');
+        j = 0;
+        while(tab[j])
+        {
+            newtab[k] = ft_strdup(tab[j]);
+            k++;
+            j++;
+        }
+        freetab(tab);
+        i++;
+    }
+    return (newtab);
 }
 

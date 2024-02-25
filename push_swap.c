@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: klopez <klopez@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kenz <kenz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 04:01:02 by kenz              #+#    #+#             */
-/*   Updated: 2024/02/24 18:12:44 by klopez           ###   ########.fr       */
+/*   Updated: 2024/02/25 03:32:00 by kenz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int main(int ac, char **av)
     data.lsta = NULL;
     data.lstb = NULL;
     char **tab;
-    if (ac > 1)
+    if (ac > 2)
     {
         //check_args_value(av, ac);
         init_data(&data);
@@ -27,9 +27,10 @@ int main(int ac, char **av)
         print_all_lst(data.lsta, data.lstb);
         tab = init_tab(av, ac, &data);
         check_argv(tab);
-    
+        algorithm(&data);
+        print_all_lst(data.lsta, data.lstb);
 
-
+        freetab(tab);
         printf("len a = %d, len b = %d\n", data.utils.len_a, data.utils.len_b);
     }
     else 
