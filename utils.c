@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: klopez <klopez@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kenz <kenz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 01:46:00 by kenz              #+#    #+#             */
-/*   Updated: 2024/02/25 18:54:05 by klopez           ###   ########.fr       */
+/*   Updated: 2024/02/27 05:19:04 by kenz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ void    print_target(t_lst *lsta)
         return ;
     while (lsta)
     {
-        printf("target = %d\n", lsta->target);
+        printf("la target de %d est %d\n",lsta->nb, lsta->target);
+        printf("la position de %d est %d\n", lsta->nb, lsta->pos);
         lsta = lsta->next;
     }
 }
@@ -75,4 +76,31 @@ void    freetab(char **tab)
     while (tab[++i])
         free(tab[i]);
     free(tab);
+}
+
+void    define_pos(t_lst *lst)
+{
+    t_lst *temp;
+    int i;
+
+    i = 0;
+    temp = lst;  
+    while(lst->next)
+    {
+        lst->pos = i;
+        printf("La Position de : %d = %d\n", lst->nb , lst->pos);
+        lst = lst->next;
+        i++;
+    }
+    lst->pos = i;
+    printf("La Position de : %d = %d\n", lst->nb , lst->pos);
+}
+
+void    define_lastpos(t_lst *lst, int len_list)
+{
+    while (lst)
+    {
+        lst->last_pos = len_list;
+        lst = lst->next;
+    }
 }

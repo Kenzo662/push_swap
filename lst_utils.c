@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lst_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: klopez <klopez@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kenz <kenz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 02:52:55 by kenz              #+#    #+#             */
-/*   Updated: 2024/02/25 19:25:23 by klopez           ###   ########.fr       */
+/*   Updated: 2024/02/27 05:07:53 by kenz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ t_lst   *push_front(t_lst *lst, int nb)
     node->nb = nb;
     node->target = 0;
     node->pos = 0;
+    node->last_pos = 0;
+    node->pushcost = 0;
     node->next = lst;
     return (node);
 }
@@ -35,6 +37,8 @@ t_lst   *push_back(t_lst *lst, int nb)
     node->nb = nb;
     node->target = 0;
     node->pos = 0;
+    node->last_pos = 0;
+    node->pushcost = 0;
     node->next = NULL;
 
     if(!lst)

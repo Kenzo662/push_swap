@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: klopez <klopez@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kenz <kenz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 04:33:38 by kenz              #+#    #+#             */
-/*   Updated: 2024/02/25 19:11:12 by klopez           ###   ########.fr       */
+/*   Updated: 2024/02/27 01:53:16 by kenz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@ void     init_data(t_data *data)
     data->utils.use_rb = 0;
     data->utils.use_rra = 0;
     data->utils.use_rrb = 0;
-    data->utils.min = 0;
-    data->utils.max = 0;
 }
 t_lst    *init_lst_a(char **av, int ac, t_data *data)
 {

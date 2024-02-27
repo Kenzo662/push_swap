@@ -6,7 +6,7 @@
 /*   By: kenz <kenz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 04:01:02 by kenz              #+#    #+#             */
-/*   Updated: 2024/02/25 03:32:00 by kenz             ###   ########.fr       */
+/*   Updated: 2024/02/26 02:52:35 by kenz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ int main(int ac, char **av)
         //check_args_value(av, ac);
         init_data(&data);
         data.lsta = init_lst_a(av, ac, &data);
-        print_all_lst(data.lsta, data.lstb);
         tab = init_tab(av, ac, &data);
         check_argv(tab);
+        print_all_lst(data.lsta, data.lstb);
         algorithm(&data);
         print_all_lst(data.lsta, data.lstb);
 

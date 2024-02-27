@@ -14,6 +14,8 @@ typedef struct s_lst
     int nb;
     int target;
     int pos;
+    int last_pos;
+    int pushcost;
     struct s_lst  *next;
 }               t_lst;
 
@@ -29,7 +31,8 @@ typedef struct s_utils
     int    use_rrb;
     int    min;
     int    max;
-    int    median;
+    int    median_lsta;
+    int    median_lstb;
 }               t_utils;
 
 typedef struct s_data
@@ -67,9 +70,13 @@ void    rra(t_data *data, t_lst *lsta);
 void    rrb(t_data *data, t_lst *lstb);
 void    rrr(t_data *data, t_lst *lsta, t_lst *lstb);
 void    algorithm(t_data *data);
-void    find_min_and_max(t_data *data);
-int    find_target(t_data *data, t_lst *lstb, int nb);
-t_lst    *define_target(t_data *data, t_lst *lsta);
-
+void    find_max(t_lst *lst, t_data *data);
+int     find_target(t_data *data, t_lst *lstb, int nb);
+t_lst   *define_target(t_data *data, t_lst *lsta);
+void    find_pushcost(t_data *data, t_lst *lst, int nb, int target);
+void    define_pos(t_lst *lst);
+int     define_target_pos(int target, t_lst *lstb);
+void    define_lastpos(t_lst *lst, int len_list);
+void    set_list(t_data *data);
 
 #endif
