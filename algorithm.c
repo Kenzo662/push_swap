@@ -6,7 +6,7 @@
 /*   By: kenz <kenz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 00:17:03 by kenz              #+#    #+#             */
-/*   Updated: 2024/02/29 04:45:16 by kenz             ###   ########.fr       */
+/*   Updated: 2024/02/29 05:16:29 by kenz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,6 +152,7 @@ void    execute(t_data *data, t_lst *lsta)
     printf ("len a = %d\nlen b = %d\n", data->utils.len_a, data->utils.len_b);
     data->utils.median_lsta = (data->utils.len_a / 2);
     data->utils.median_lstb = (data->utils.len_b / 2);
+    printf("MEDIAN A = %d\nMEDIAN B =%d\n", data->utils.median_lsta, data->utils.median_lstb);
     printf ("LSTANB = %d LSTA-TARGET = %d\n", lsta->nb, lsta->target);
     printf ("LSTAPOS = %d TARGETPOS = %d\n", lsta->pos, target_pos);
     if (lsta->pos == 0 && target_pos == 0)
@@ -208,7 +209,7 @@ void    execute(t_data *data, t_lst *lsta)
             }
             while (j > 0)
             {
-                rb(data);
+                ra(data);
                 j--;
             }
         }

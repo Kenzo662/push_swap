@@ -6,7 +6,7 @@
 /*   By: kenz <kenz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 03:31:30 by kenz              #+#    #+#             */
-/*   Updated: 2024/02/29 04:48:23 by kenz             ###   ########.fr       */
+/*   Updated: 2024/02/29 05:10:26 by kenz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 int    define_target_pos(int target, t_lst *lstb)
 {
     int targetpos;
+
+    define_pos(lstb);
 
     targetpos = 0;
     while (lstb)
