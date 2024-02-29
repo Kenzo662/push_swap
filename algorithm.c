@@ -6,7 +6,7 @@
 /*   By: kenz <kenz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 00:17:03 by kenz              #+#    #+#             */
-/*   Updated: 2024/02/27 05:25:38 by kenz             ###   ########.fr       */
+/*   Updated: 2024/02/29 04:45:16 by kenz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,146 +14,239 @@
 
 void    algorithm(t_data *data)
 {
-    if (data->utils.len_a > 3)
+    while (data->utils.len_a > 3)
     {
         pb(data);
         pb(data);
         set_list(data);
-        printf("nb = %d target = %d\n",data->lsta->nb, data->lsta->target);
-        find_pushcost(data, data->lsta, data->lsta->nb, data->lsta->target);
+        define_pushcost(data, data->lsta);
+        execute(data, data->lsta);
         print_all_lst(data->lsta, data->lstb);
         set_list(data);
-        printf("nb = %d target = %d\n",data->lsta->nb, data->lsta->target);
-        find_pushcost(data, data->lsta->next->next, data->lsta->next->next->nb, data->lsta->next->next->target);
+        define_pushcost(data, data->lsta);
+        execute(data, data->lsta);
+        print_all_lst(data->lsta, data->lstb);
     }
-    else
-        ft_printf("non :d");
+    if (data->utils.len_a == 3)
+    {
+        sort_three(data);
+    }
 }
 
-void    find_max(t_lst *lst, t_data *data)
+void    set_list(t_data *data)
 {
-    t_lst *start;
-
-    start = lst;
-    data->utils.max = 0;
-    if (!lst)
-        return;
-    if (data->utils.max)
-    {
-        if (data->utils.max < lst->nb)
-            data->utils.max = lst->nb;
-    }
-    lst = lst->next;
-    while (lst)
-    {
-        if (data->utils.max)
-        {
-            if (data->utils.max < lst->nb)
-                data->utils.max = lst->nb;
-        }
-        else if (start->nb > lst->nb)
-            data->utils.max = start->nb;
-        else if (start->nb < lst->nb)
-            data->utils.max = lst->nb;
-        lst = lst->next;
-    }
-    printf("MAX = %d\n", data->utils.max);
+        define_pos(data->lsta);
+        define_pos(data->lstb);
+        define_lastpos(data->lsta, data->utils.len_a);
+        define_lastpos(data->lstb, data->utils.len_b);
+        find_max(data->lstb, data);
+        data->lsta = define_target(data, data->lsta);
+        print_target(data->lsta);
 }
 
-int    find_target(t_data *data, t_lst *lstb, int nb)
+int    find_pushcost(t_data *data, t_lst *lst)
 {
-    int *tab;
-    int i;
-    int target;
-   
-    i = 0;
-    tab = ft_calloc((data->utils.len_b + 1), (sizeof(int)));
-    while (lstb)
-    {
-        if (nb > lstb->nb)
-            tab[i++] = lstb->nb;
-        lstb = lstb->next;
-    }
-    if (i == 0)
-        return (target = data->utils.max, free(tab),  target);
-    i = 1;
-    while (tab[i])
-    {
-        if (tab[0] < tab[i])
-             tab[0] = tab[i];
-        i++;
-    }
-    target = tab[0];
-    return (free(tab) , target);
-}
-
-t_lst    *define_target(t_data *data, t_lst *lsta)
-{
-    if (!lsta || !data->lsta)
-        return NULL;
-    t_lst *temp;
-    int i;
-
-    temp = lsta;
-    while (temp)
-    {
-        temp->target = find_target(data, data->lstb, temp->nb);
-        temp = temp->next;
-    }
-    return (lsta);
-}
-
-void    find_pushcost(t_data *data, t_lst *lst, int nb, int target)
-{
-    int a_cost;
-    int b_cost;
     int target_pos;
+    int pushcost;
 
-
-    a_cost = 0;
-    b_cost = 0;
-    target_pos = define_target_pos(target, data->lstb);  
+    pushcost = 0;
+    target_pos = define_target_pos(lst->target, data->lstb);
     data->utils.median_lsta = (data->utils.len_a / 2);
     data->utils.median_lstb = (data->utils.len_b / 2);
-    printf("median A = %d\n", data->utils.median_lsta);
-    printf("median B = %d\n", data->utils.median_lstb);
-    if(lst->pos == 0 && target_pos == 0)
-    {
-        pb(data);
-        return ;
-    }
-    printf ("lstpos = %d\n", lst->pos);
     if (lst->pos <= data->utils.median_lsta && target_pos <= data->utils.median_lstb)
     {
-        a_cost = lst->pos;
-        b_cost = target_pos;
-        lst->pushcost = (a_cost + b_cost);
-        printf("A");
-        printf("pushcost = %d\n", lst->pushcost);
+        pushcost = (lst->pos + target_pos);
     }
     else if (lst->pos > data->utils.median_lsta && target_pos > data->utils.median_lstb)
     {
-        a_cost = (data->lsta->last_pos - lst->pos);
-        b_cost = (data->lstb->last_pos - target_pos);
-        lst->pushcost = (a_cost + b_cost);
-        printf("B");
-        printf("pushcost = %d\n", lst->pushcost);
+        pushcost = (data->lsta->last_pos - lst->pos) + (data->lstb->last_pos - target_pos);
     }
     else if (lst->pos <= data->utils.median_lsta && target_pos > data->utils.median_lstb)
     {
-        a_cost = lst->pos;
-        b_cost = (data->lstb->last_pos - target_pos);
-        lst->pushcost = (a_cost + b_cost);
-        printf("C");
-        printf("pushcost = %d\n", lst->pushcost);
+        pushcost = lst->pos + (data->lstb->last_pos - target_pos) + 1;
     }
     else if (lst->pos > data->utils.median_lsta && target_pos <= data->utils.median_lstb)
     {
-        a_cost = (data->lsta->last_pos - lst->pos);
-        b_cost = target_pos;
-        lst->pushcost = (a_cost + b_cost);
-        printf("D");
-        printf("pushcost = %d\n", lst->pushcost);
+        pushcost = (data->lsta->last_pos - lst->pos) + target_pos;
+    }
+    return (pushcost);
+}
+
+void    define_pushcost(t_data *data, t_lst *lsta)
+{
+    if (!lsta)
+        return;
+    while (lsta)
+    {
+        lsta->pushcost = find_pushcost(data, lsta);
+        printf("pushcost = %d\n", lsta->pushcost);
+        lsta = lsta->next;
+    }
+}
+
+int    calcul(t_lst *lst, int pos)
+{
+    int i;
+    int j;
+    int k;
+
+    i = 0;
+    j = 0;
+    k = 0;    
+    if (!lst)
+        return (0);
+    i = pos;
+    while (i > 0)
+    {
+        i--;
+        j++;
+    }
+    i = pos;
+    while (i < lst->last_pos)
+    {
+        i++;
+        k++;
+    }
+    if (j < k)
+        return (1);
+    return (2);
+}
+
+int    find_cheapest(t_lst *lsta)
+{
+    int cheapest;
+    int cost; 
+    if (!lsta)
+        return (0);
+    cheapest = lsta->nb;
+    cost = lsta->pushcost;
+    while (lsta)
+    {
+        if (cost > lsta->pushcost)
+            {
+                cost = lsta->pushcost;
+                cheapest = lsta->nb;
+            }
+            lsta = lsta->next;
+    }
+    printf ("cheapest = %d\n", cheapest);
+    return (cheapest);
+}
+
+void    execute(t_data *data, t_lst *lsta)
+{
+    if (!lsta)
+        return ;
+    int cheapest;
+    int target_pos;
+    int i;
+    int j;
+
+    i = 0;
+    j = 0;
+    cheapest = find_cheapest(lsta);
+    lsta = define_target(data, data->lsta);
+    while (cheapest != lsta->nb)
+        lsta = lsta->next;
+    target_pos = define_target_pos(lsta->target, data->lstb);
+    printf ("len a = %d\nlen b = %d\n", data->utils.len_a, data->utils.len_b);
+    data->utils.median_lsta = (data->utils.len_a / 2);
+    data->utils.median_lstb = (data->utils.len_b / 2);
+    printf ("LSTANB = %d LSTA-TARGET = %d\n", lsta->nb, lsta->target);
+    printf ("LSTAPOS = %d TARGETPOS = %d\n", lsta->pos, target_pos);
+    if (lsta->pos == 0 && target_pos == 0)
+        {
+            pb(data);
+            return;
+        }
+    if (lsta->pos > data->utils.median_lsta && target_pos <= data->utils.median_lstb)
+    {
+        i = lsta->pos;
+        while (i++ < data->utils.len_a)
+                rra(data, data->lsta);
+        while (target_pos > 0)
+            {
+                rb(data);
+                target_pos--;
+            }
+        pb(data);
+    }
+    else if (lsta->pos <= data->utils.median_lsta && target_pos > data->utils.median_lstb)
+    {
+        i = lsta->pos + 1;
+        while (--i > 0)
+            ra(data);
+        while (target_pos++ < data->utils.len_b)
+            rrb(data, data->lstb);
+        pb(data);
+    }
+    else if (lsta->pos <= data->utils.median_lsta && target_pos <= data->utils.median_lstb)
+    {
+        if (lsta->pos < target_pos)
+        {
+            j = target_pos - lsta->pos;
+            i = lsta->pos;
+            while (i > 0)
+            {
+                rr(data);
+                i--;
+            }
+            while (j > 0)
+            {
+                rb(data);
+                j--;
+            }
+        }
+        else if (lsta->pos > target_pos)
+        {
+            j = lsta->pos - target_pos;
+            i = target_pos;
+            while (i > 0)
+            {
+                rr(data);
+                i--;
+            }
+            while (j > 0)
+            {
+                rb(data);
+                j--;
+            }
+        }
+        pb(data);
+    }
+    else if (lsta->pos > data->utils.median_lsta && target_pos > data->utils.median_lstb)
+    {
+        if (lsta->pos > target_pos)
+        {
+            i = lsta->pos;
+            while (i < data->utils.len_a)
+            {
+                rrr(data, data->lsta, data->lstb);
+                i++;
+            }
+            j = target_pos + i;
+            while (j < data->utils.len_b)
+            {
+                rrb(data, data->lstb);
+                j++;
+            }
+        }
+        else if (lsta->pos < target_pos)
+        {
+            i = target_pos;
+            while (i < target_pos)
+            {
+                rrr(data, data->lsta, data->lstb);
+                i++;
+            }
+            j = lsta->pos + i;
+            while (j < data->utils.len_b)
+            {
+                rra(data, data->lsta);
+                j++;
+            }
+        }
+        pb(data);
     }
 }
 

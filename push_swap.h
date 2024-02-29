@@ -72,11 +72,16 @@ void    rrr(t_data *data, t_lst *lsta, t_lst *lstb);
 void    algorithm(t_data *data);
 void    find_max(t_lst *lst, t_data *data);
 int     find_target(t_data *data, t_lst *lstb, int nb);
+int     find_pushcost(t_data *data, t_lst *lst);
+int     find_cheapest(t_lst *lsta);
 t_lst   *define_target(t_data *data, t_lst *lsta);
-void    find_pushcost(t_data *data, t_lst *lst, int nb, int target);
 void    define_pos(t_lst *lst);
 int     define_target_pos(int target, t_lst *lstb);
 void    define_lastpos(t_lst *lst, int len_list);
+void    define_pushcost(t_data *data, t_lst *lsta);
 void    set_list(t_data *data);
+int     calcul(t_lst *lsta, int pos);
+void    execute(t_data *data, t_lst *lsta);
+void    sort_three(t_data *data);
 
 #endif
