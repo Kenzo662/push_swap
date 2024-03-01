@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   algorithm_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kenz <kenz@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: klopez <klopez@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 03:31:30 by kenz              #+#    #+#             */
-/*   Updated: 2024/02/29 05:10:26 by kenz             ###   ########.fr       */
+/*   Updated: 2024/02/29 16:59:40 by klopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,9 @@ void    sort_three(t_data *data)
     if (!data->lsta)
         return;
     find_max(data->lsta, data);
+    printf ("lsta->nb = %d\n", data->lsta->nb);
+    if (data->lsta->next->next->nb == data->utils.max && data->lsta->nb < data->lsta->next->nb)
+        return ;
     if (data->lsta->nb == data->utils.max)
             ra(data);
     else if (data->lsta->next->nb == data->utils.max)
