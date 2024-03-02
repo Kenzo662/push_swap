@@ -6,7 +6,7 @@
 /*   By: kenz <kenz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 00:17:03 by kenz              #+#    #+#             */
-/*   Updated: 2024/03/02 05:50:07 by kenz             ###   ########.fr       */
+/*   Updated: 2024/03/02 19:02:58 by kenz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,9 @@ void    algorithm(t_data *data)
     {
         set_list_a(data);
         define_pushcost(data, data->lsta);
+        //print_target(data->lsta);
         execute(data, data->lsta);
+        //print_all_lst(data->lsta, data->lstb);
     }
     if (data->utils.len_a == 3)
     {
@@ -36,6 +38,7 @@ void    algorithm(t_data *data)
             i--;
         }
         last_move(data, data->lsta);
+        freelist(data);
     }
 }
 
@@ -51,6 +54,8 @@ void    execute(t_data *data, t_lst *lsta)
     while (cheapest != lsta->nb)
         lsta = lsta->next;
     target_pos = define_target_pos(lsta->target, data->lstb);
+   /*  printf("La target de : %d = %d\n", lsta->nb, lsta->target);
+    printf("La pos de NB = %d La pos de TARGET = %d\n", lsta->pos, target_pos); */
     init_median(data);
     if (lsta->pos == 0 && target_pos == 0)
             return (pb(data));

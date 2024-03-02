@@ -6,7 +6,7 @@
 /*   By: kenz <kenz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 02:52:55 by kenz              #+#    #+#             */
-/*   Updated: 2024/02/27 05:07:53 by kenz             ###   ########.fr       */
+/*   Updated: 2024/03/02 18:45:38 by kenz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 t_lst   *push_front(t_lst *lst, int nb)
 {
     t_lst *node;
-
-    node = malloc(sizeof(*node));
+    
+    node = (t_lst *)malloc(sizeof(*node));
     if (!node)
         return (NULL);
     node->nb = nb;
@@ -33,14 +33,13 @@ t_lst   *push_back(t_lst *lst, int nb)
     t_lst *node;
     t_lst *templst;
 
-    node = malloc(sizeof(*node));
+    node = (t_lst *)malloc(sizeof(*node));
     node->nb = nb;
     node->target = 0;
     node->pos = 0;
     node->last_pos = 0;
     node->pushcost = 0;
     node->next = NULL;
-
     if(!lst)
         return(node);
     templst = lst;
@@ -74,9 +73,8 @@ t_lst   *pop_back(t_lst *lst)
 t_lst   *pop_front(t_lst *lst)
 {
     t_lst *node;
-
-    node = malloc(sizeof(*node));
-    if (!node)
+    
+    if (!lst)
         return (NULL);
     node = lst->next;
     free(lst);

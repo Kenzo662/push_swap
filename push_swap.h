@@ -106,6 +106,8 @@ void    calcul_rr(t_data *data, t_lst *lsta, int i);
 void    execute_rr(t_data *data, t_lst *lsta, int target_pos);
 int	    ft_strcmp(char *s1, char *s2);
 void    freetab(char **tab);
+void    freelist(t_data *data);
+void	free_lst_ab(t_lst **lst_a, t_lst **lst_b);
 void    last_move(t_data *data, t_lst *lsta);
 void    set_list_a(t_data *data);
 void    set_list_b(t_data *data);

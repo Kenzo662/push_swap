@@ -6,7 +6,7 @@
 /*   By: kenz <kenz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 01:46:00 by kenz              #+#    #+#             */
-/*   Updated: 2024/03/02 01:38:24 by kenz             ###   ########.fr       */
+/*   Updated: 2024/03/02 18:47:07 by kenz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,4 +75,30 @@ void    freetab(char **tab)
     while (tab[++i])
         free(tab[i]);
     free(tab);
+}
+
+void    freelist(t_data *data)
+{
+    t_lst *next;
+    
+    if (data->lsta)
+    {     
+        while (data->lsta)
+        {
+            next = data->lsta->next;
+            free(data->lsta);
+            data->lsta = next;
+        }
+        free(data->lsta);
+    }
+    if (data->lstb)
+    {
+        while (data->lstb)
+        {
+            next = data->lstb->next;
+            free(data->lstb);
+            data->lstb = next;
+        }
+        free(data->lstb);
+    }
 }

@@ -6,7 +6,7 @@
 /*   By: kenz <kenz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 03:31:30 by kenz              #+#    #+#             */
-/*   Updated: 2024/03/02 05:50:16 by kenz             ###   ########.fr       */
+/*   Updated: 2024/03/02 18:32:29 by kenz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int    find_cheapest(t_lst *lsta)
             }
             lsta = lsta->next;
     }
+    //printf("cheapest = %d\n", cheapest);
     return (cheapest);
 }
 

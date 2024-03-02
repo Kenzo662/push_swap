@@ -6,7 +6,7 @@
 /*   By: kenz <kenz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 01:30:34 by kenz              #+#    #+#             */
-/*   Updated: 2024/03/02 05:50:37 by kenz             ###   ########.fr       */
+/*   Updated: 2024/03/02 16:15:16 by kenz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,8 @@ int    find_target(t_data *data, t_lst *lstb, int nb)
         return (target = data->utils.max, free(tab),  target);
     while (i > 0)
     {
-        if (tab[0] < tab[i])
-             tab[0] = tab[i];
+        if (tab[0] < tab[i - 1])
+             tab[0] = tab[i - 1];
         i--;
     }
     target = tab[0];
@@ -129,10 +129,16 @@ int    find_pushcost(t_data *data, t_lst *lst)
     }
     else if (lst->pos > data->utils.median_lsta && target_pos > data->utils.median_lstb)
     {
-        if ((data->utils.median_lsta - lst->pos) > (data->utils.median_lstb - target_pos))
-            pushcost = data->utils.len_a - lst->pos;
-        else if ((data->utils.median_lsta - lst->pos) < (data->utils.median_lstb - target_pos))
-            pushcost = data->utils.len_b - target_pos;
+        if ((data->utils.len_a - lst->pos) > (data->utils.len_b - target_pos))
+        {
+            /* printf("ZAEAZ"); */
+            return (pushcost = (data->utils.len_a - lst->pos));
+        }
+        else if ((data->utils.len_a - lst->pos) < (data->utils.len_b - target_pos))
+        {
+           /*  printf("AZEAZE"); */
+            return (pushcost = (data->utils.len_b - target_pos));
+        }
         pushcost = lst->pos;
     }
     else if (lst->pos <= data->utils.median_lsta && target_pos > data->utils.median_lstb)

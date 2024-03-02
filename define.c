@@ -6,7 +6,7 @@
 /*   By: kenz <kenz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 01:33:29 by kenz              #+#    #+#             */
-/*   Updated: 2024/03/02 05:39:23 by kenz             ###   ########.fr       */
+/*   Updated: 2024/03/02 16:15:27 by kenz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ void    define_pushcost(t_data *data, t_lst *lsta)
     while (lsta)
     {
         lsta->pushcost = find_pushcost(data, lsta);
+/*         printf("pushcost = %d\n", lsta->pushcost); */
         lsta = lsta->next;
     }
 }

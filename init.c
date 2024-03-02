@@ -6,7 +6,7 @@
 /*   By: kenz <kenz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 04:33:38 by kenz              #+#    #+#             */
-/*   Updated: 2024/03/02 05:16:40 by kenz             ###   ########.fr       */
+/*   Updated: 2024/03/02 17:18:32 by kenz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void     init_data(t_data *data)
     data->utils.use_rrb = 0;
     data->utils.count = 0;
 }
+
 t_lst    *init_lst_a(char **av, int ac, t_data *data)
 {
     int i;

@@ -6,7 +6,7 @@
 /*   By: kenz <kenz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 04:01:02 by kenz              #+#    #+#             */
-/*   Updated: 2024/03/02 05:21:51 by kenz             ###   ########.fr       */
+/*   Updated: 2024/03/02 18:48:00 by kenz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ int main(int ac, char **av)
         //check_argv(tab);
         algorithm(&data);
         freetab(tab);
+        /* printf("count = %d\n", data.utils.count);
+        printf("len a = %d len b = %d\n", data.utils.len_a, data.utils.len_b); */
     }
     else 
         ft_printf("Besoin d'arguments!\n");

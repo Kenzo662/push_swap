@@ -6,7 +6,7 @@
 /*   By: kenz <kenz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 22:58:56 by kenz              #+#    #+#             */
-/*   Updated: 2024/03/02 00:06:34 by kenz             ###   ########.fr       */
+/*   Updated: 2024/03/02 16:10:14 by kenz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void    execute_rrr(t_data *data, t_lst *lsta, int target_pos, int i)
 
     j = target_pos;
     k = 0;
+ /*    printf("AAAAAA"); */
     while (i < data->utils.len_a && j < data->utils.len_b)
     {
         rrr(data, data->lsta, data->lstb);
@@ -47,6 +48,7 @@ void    execute_rr(t_data *data, t_lst *lsta, int target_pos)
 
     i = 0;
     j = 0;
+   /*  printf("BBBBBB"); */
     if (lsta->pos < target_pos)
     {
         j = (target_pos - lsta->pos) + 1;
@@ -79,6 +81,7 @@ void    calcul_rr(t_data *data, t_lst *lsta, int i)
 void    execute_rra(t_data *data, t_lst *lsta, int target_pos, int i)
 {
         i = lsta->pos;
+        /* printf("CCCCCC"); */
         while (i++ < data->utils.len_a)
                 rra(data, data->lsta);
         while (target_pos > 0)
@@ -90,6 +93,7 @@ void    execute_rra(t_data *data, t_lst *lsta, int target_pos, int i)
 
 void    execute_rrb(t_data *data, t_lst *lsta, int target_pos, int i)
 {
+        /* printf("DDDDDD"); */
         i = lsta->pos + 1;
         while (--i > 0)
             ra(data);
