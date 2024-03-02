@@ -6,7 +6,7 @@
 /*   By: kenz <kenz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 04:33:38 by kenz              #+#    #+#             */
-/*   Updated: 2024/02/27 01:53:16 by kenz             ###   ########.fr       */
+/*   Updated: 2024/03/02 05:16:40 by kenz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void     init_data(t_data *data)
     data->utils.use_rb = 0;
     data->utils.use_rra = 0;
     data->utils.use_rrb = 0;
+    data->utils.count = 0;
 }
 t_lst    *init_lst_a(char **av, int ac, t_data *data)
 {
@@ -47,7 +48,6 @@ t_lst    *init_lst_a(char **av, int ac, t_data *data)
         freetab(tab);
         i++;
     }
-    printf("len = %d\n", data->utils.len_a);
     return(temp);
 }
 
@@ -78,3 +78,8 @@ char    **init_tab(char **av, int ac, t_data *data)
     return (newtab);
 }
 
+void    init_median(t_data *data)
+{
+    data->utils.median_lsta = (data->utils.len_a / 2);
+    data->utils.median_lstb = (data->utils.len_b / 2);
+}

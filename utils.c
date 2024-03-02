@@ -6,7 +6,7 @@
 /*   By: kenz <kenz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 01:46:00 by kenz              #+#    #+#             */
-/*   Updated: 2024/02/29 03:26:02 by kenz             ###   ########.fr       */
+/*   Updated: 2024/03/02 01:38:24 by kenz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,31 +75,4 @@ void    freetab(char **tab)
     while (tab[++i])
         free(tab[i]);
     free(tab);
-}
-
-void    define_pos(t_lst *lst)
-{
-    int i;
-
-    i = 0;
-    if (!lst)
-        return;
-    while(lst->next)
-    {
-        lst->pos = i;
-        printf("La Position de : %d = %d\n", lst->nb , lst->pos);
-        lst = lst->next;
-        i++;
-    }
-    lst->pos = i;
-    printf("La Position de : %d = %d\n", lst->nb , lst->pos);
-}
-
-void    define_lastpos(t_lst *lst, int len_list)
-{
-    while (lst)
-    {
-        lst->last_pos = len_list;
-        lst = lst->next;
-    }
 }

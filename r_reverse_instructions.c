@@ -6,7 +6,7 @@
 /*   By: kenz <kenz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 02:57:54 by kenz              #+#    #+#             */
-/*   Updated: 2024/02/24 03:55:33 by kenz             ###   ########.fr       */
+/*   Updated: 2024/03/01 23:37:27 by kenz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,13 @@ void    rra(t_data *data, t_lst *lsta)
     data->lsta = pop_back(data->lsta);
     data->lsta = push_front(data->lsta, temp);
     if(data->utils.use_rra == 0)
+    {
+        data->utils.count++;
         ft_printf("rra\n");
+    }
     else
         data->utils.use_rra = 0;
+    data->utils.count++;
 }
 
 void    rrb(t_data *data, t_lst *lstb)
@@ -47,7 +51,10 @@ void    rrb(t_data *data, t_lst *lstb)
     data->lstb = pop_back(data->lstb);
     data->lstb = push_front(data->lstb, temp1);
     if(data->utils.use_rrb == 0)
+    {
+        data->utils.count++;
         ft_printf("rrb\n");
+    }
     else
         data->utils.use_rrb = 0;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: klopez <klopez@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kenz <kenz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 04:01:02 by kenz              #+#    #+#             */
-/*   Updated: 2024/03/01 17:15:48 by klopez           ###   ########.fr       */
+/*   Updated: 2024/03/02 05:21:51 by kenz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,9 @@ int main(int ac, char **av)
         data.lsta = init_lst_a(av, ac, &data);
         tab = init_tab(av, ac, &data);
         //check_argv(tab);
-        print_all_lst(data.lsta, data.lstb);
         algorithm(&data);
-        print_all_lst(data.lsta, data.lstb);
-
         freetab(tab);
-        printf("len a = %d, len b = %d\n", data.utils.len_a, data.utils.len_b);
     }
     else 
-        printf("Besoin d'arguments!\n");
+        ft_printf("Besoin d'arguments!\n");
 }

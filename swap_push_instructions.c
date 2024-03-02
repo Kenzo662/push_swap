@@ -6,7 +6,7 @@
 /*   By: kenz <kenz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 04:30:11 by kenz              #+#    #+#             */
-/*   Updated: 2024/02/27 01:06:13 by kenz             ###   ########.fr       */
+/*   Updated: 2024/03/01 23:38:12 by kenz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,10 @@ void    sa(t_lst *lst, t_data *data)
     lst->next->nb = lst->nb;
     lst->nb = temp;
     if (data->utils.use_sa == 0)
+    {
+        data->utils.count++;
         ft_printf("sa\n");
+    }
     else
         data->utils.use_sa = 0;
 }
@@ -47,7 +50,10 @@ void    sb(t_lst *lst, t_data *data)
     lst->next->nb = lst->nb;
     lst->nb = temp;
     if (data->utils.use_sb == 0)
+    {
+        data->utils.count++;
         ft_printf("sb\n");
+    }
     else
         data->utils.use_sb = 0;
 }
@@ -60,6 +66,7 @@ void    ss(t_data *data)
         sa(data->lsta, data);   
     if (data->lstb && data->lstb->next)
         sb(data->lstb, data);
+    data->utils.count++;
     ft_printf("ss\n");
 }
 
@@ -74,6 +81,7 @@ void    pb(t_data *data)
     data->lstb = push_front(data->lstb, temp);
     data->utils.len_b++;
     data->utils.len_a--;
+    data->utils.count++;
     ft_printf("pb\n");
 }
 
@@ -88,6 +96,7 @@ void    pa(t_data *data)
     data->lsta = push_front(data->lsta, temp);
     data->utils.len_a++;
     data->utils.len_b--;
+    data->utils.count++;
     ft_printf("pa\n");
 }
 
