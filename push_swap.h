@@ -9,6 +9,7 @@
 # include <unistd.h>
 
 
+
 typedef struct s_lst
 {
     int nb;
@@ -31,9 +32,10 @@ typedef struct s_utils
     int    use_rrb;
     int    min;
     int    max;
-    int    median_lsta;
-    int    median_lstb;
+    int    m_lsta;
+    int    m_lstb;
     int    count;
+    t_lst *templst;
 }               t_utils;
 
 typedef struct s_data
@@ -45,8 +47,8 @@ typedef struct s_data
 }               t_data;
 
 
-void    check_argv(char **tab);
-void    check_av_char(char **tab);
+void	check_argv(char **tab, t_data *data);
+void	check_av_char(char **tab, t_data *data);
 
 t_lst   *define_target(t_data *data, t_lst *lsta);
 t_lst   *define_target_b(t_data *data, t_lst *lstb);
@@ -71,7 +73,7 @@ int     find_cheapest(t_lst *lsta);
 
 
 void     init_data(t_data *data);
-t_lst    *init_lst_a(char **av, int ac, t_data *data);
+void    init_lst_a(char **av, int ac, t_data *data);
 char    **init_tab(char **av, int ac, t_data *data);
 void    init_median(t_data *data);
 void    init_execute_data(t_data *data, t_lst *lsta, int target_pos, int cheapest);
@@ -102,12 +104,14 @@ void    rrr(t_data *data, t_lst *lsta, t_lst *lstb);
 
 
 void    algorithm(t_data *data);
+void	algo_b_to_a(t_data *data);
 void    calcul_rr(t_data *data, t_lst *lsta, int i);
+int     cut_while(int i, int target, int *tab);
 void    execute_rr(t_data *data, t_lst *lsta, int target_pos);
 int	    ft_strcmp(char *s1, char *s2);
 void    freetab(char **tab);
-void    freelist(t_data *data);
-void	free_lst_ab(t_lst **lst_a, t_lst **lst_b);
+void	four_argv(t_data *data);
+void    freelist(t_lst *lst);
 void    last_move(t_data *data, t_lst *lsta);
 void    set_list_a(t_data *data);
 void    set_list_b(t_data *data);

@@ -6,31 +6,29 @@
 /*   By: kenz <kenz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 04:01:02 by kenz              #+#    #+#             */
-/*   Updated: 2024/03/02 18:48:00 by kenz             ###   ########.fr       */
+/*   Updated: 2024/03/04 04:53:05 by kenz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
-    t_data data;
+	t_data	data;
+	char	**tab;
 
-    data.lsta = NULL;
-    data.lstb = NULL;
-    char **tab;
-    if (ac > 2)
-    {
-        //check_args_value(av, ac);
-        init_data(&data);
-        data.lsta = init_lst_a(av, ac, &data);
-        tab = init_tab(av, ac, &data);
-        //check_argv(tab);
-        algorithm(&data);
-        freetab(tab);
-        /* printf("count = %d\n", data.utils.count);
-        printf("len a = %d len b = %d\n", data.utils.len_a, data.utils.len_b); */
-    }
-    else 
-        ft_printf("Besoin d'arguments!\n");
+	data.lsta = NULL;
+	data.lstb = NULL;
+	if (ac > 2)
+	{
+		init_data(&data);
+		init_lst_a(av, ac, &data);
+		tab = init_tab(av, ac, &data);
+		check_argv(tab, &data);
+		algorithm(&data);
+		freetab(tab);
+		freelist(data.lsta);
+	}
+	else
+		ft_printf("Besoin d'arguments!\n");
 }
