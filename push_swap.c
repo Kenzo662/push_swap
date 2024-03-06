@@ -6,7 +6,7 @@
 /*   By: kenz <kenz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 04:01:02 by kenz              #+#    #+#             */
-/*   Updated: 2024/03/05 01:58:06 by kenz             ###   ########.fr       */
+/*   Updated: 2024/03/06 20:06:38 by kenz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,4 +66,10 @@ void	print_all_lst(t_lst *lsta, t_lst *lstb)
 		lstb = lstb->next;
 	}
 	ft_printf("<------------------------------------>\n");
+}
+
+void	sort_two(t_data *data)
+{
+	if (data->lsta->nb > data->lsta->next->nb)
+		sa(data->lsta, data);
 }

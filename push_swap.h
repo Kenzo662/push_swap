@@ -6,7 +6,7 @@
 /*   By: kenz <kenz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 05:04:10 by kenz              #+#    #+#             */
-/*   Updated: 2024/03/05 00:42:05 by kenz             ###   ########.fr       */
+/*   Updated: 2024/03/06 20:02:40 by kenz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,7 @@ void				freelist(t_lst *lst);
 void				last_move(t_data *data, t_lst *lsta);
 void				set_list_a(t_data *data);
 void				set_list_b(t_data *data);
+void				sort_two(t_data *data);
 void				sort_three(t_data *data);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: kenz <kenz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 00:17:03 by kenz              #+#    #+#             */
-/*   Updated: 2024/03/04 04:54:55 by kenz             ###   ########.fr       */
+/*   Updated: 2024/03/06 20:06:51 by kenz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	algorithm(t_data *data)
 {
+	if (data->utils.len_a == 2)
+		return (sort_two(data));
 	if (data->utils.len_a == 3)
 		return (sort_three(data));
 	if (data->utils.len_a == 4)
