@@ -6,7 +6,7 @@
 /*   By: kenz <kenz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 02:09:10 by kenz              #+#    #+#             */
-/*   Updated: 2024/03/06 05:22:22 by kenz             ###   ########.fr       */
+/*   Updated: 2024/03/06 05:25:12 by kenz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	main(int ac, char **av)
 
 	data.lsta = NULL;
 	data.lstb = NULL;
-	if (ac > 4)
+	if (ac > 2)
 	{
 		init_data(&data);
 		init_lst_a(av, ac, &data);
