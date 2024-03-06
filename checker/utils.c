@@ -1,42 +1,56 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kenz <kenz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/20 04:01:02 by kenz              #+#    #+#             */
-/*   Updated: 2024/03/05 01:58:06 by kenz             ###   ########.fr       */
+/*   Created: 2024/03/05 23:16:23 by kenz              #+#    #+#             */
+/*   Updated: 2024/03/06 05:09:24 by kenz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker.h"
 
-int	main(int ac, char **av)
+int	already_sorted(t_data *data)
 {
-	t_data	data;
-	char	**tab;
+	t_lst	*temp;
+	t_lst	*next;
 
-	data.lsta = NULL;
-	data.lstb = NULL;
-	if (ac > 2)
+	temp = data->lsta;
+	next = data->lsta->next;
+	while (temp->next)
 	{
-		init_data(&data);
-		init_lst_a(av, ac, &data);
-		tab = init_tab(av, ac, &data);
-		check_argv(tab, &data);
-		if (already_sorted(&data) == 0)
-		{
-			freetab(tab);
-			freelist(data.lsta);
-			exit(0);
-		}
-		algorithm(&data);
-		freetab(tab);
-		freelist(data.lsta);
+		if (temp->nb > next->nb)
+			return (1);
+		temp = next;
+		next = next->next;
 	}
-	else
-		ft_printf("Besoin d'arguments!\n");
+	return (0);
+}
+
+void	freetab(char **tab)
+{
+	int	i;
+
+	i = -1;
+	while (tab[++i])
+		free(tab[i]);
+	free(tab);
+}
+
+void	freelist(t_lst *lst)
+{
+	t_lst	*next;
+
+	if (!lst)
+		return ;
+	while (lst)
+	{
+		next = lst->next;
+		free(lst);
+		lst = next;
+	}
 }
 
 void	print_all_lst(t_lst *lsta, t_lst *lstb)

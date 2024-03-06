@@ -1,6 +1,6 @@
 CC = gcc
 
-CFLAGS = -Wall -Wextra -g3
+CFLAGS = -g -Wall -Wextra -Werror
 
 NAME = push_swap
 
@@ -13,9 +13,11 @@ all     :   $(NAME)
 
 $(NAME) :   $(OBJ)
 	$(MAKE) -C libft
-	$(CC) $(CFLAGS) $(OBJ) -o $(NAME) -L./libft/ -lft
+	$(MAKE) -C checker
+	$(CC) $(CFLAGS) $(OBJ) -o $(NAME) -L./checker/ -L./libft/ -lft
 clean   :
-	$(MAKE) -C libft clean
+	$(MAKE) -C libft fclean
+	$(MAKE) -C checker fclean
 	rm -rf $(OBJ)
 fclean  :   clean
 	rm -f $(NAME)

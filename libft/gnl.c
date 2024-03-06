@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   gnl.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: klopez <klopez@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kenz <kenz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 12:28:17 by klopez            #+#    #+#             */
-/*   Updated: 2023/12/18 19:19:03 by klopez           ###   ########.fr       */
+/*   Updated: 2024/03/06 03:51:16 by kenz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,29 +62,29 @@ char	*ft_update4stash(char *buffer, char stash[1024][BUFFER_SIZE + 1],
 
 char	*get_next_line(int fd)
 {
-	char		*buffer;
+	char		*buff;
 	static char	stash[1024][BUFFER_SIZE + 1];
 	char		*line;
 	int			bytes;
 
 	bytes = 1;
 	line = NULL;
-	buffer = malloc(sizeof(char) * BUFFER_SIZE + 1);
+	buff = malloc(sizeof(char) * BUFFER_SIZE + 1);
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
-		return (ft_memsetgnl(stash[fd], '\0', bytes), free(buffer), NULL);
+		return (ft_memsetgnl(stash[fd], '\0', bytes), free(buff), NULL);
 	if (ft_boolstrchr(stash[fd], '\n') == 1)
-		return (line = ft_update4stash(buffer, stash, line, fd));
-	while (bytes > 0 && ft_memsetgnl(buffer, '\0', BUFFER_SIZE + 1))
+		return (line = ft_update4stash(buff, stash, line, fd));
+	while (bytes > 0 && ft_memsetgnl(buff, '\0', BUFFER_SIZE + 1))
 	{
-		bytes = read(fd, buffer, BUFFER_SIZE);
+		bytes = read(fd, buff, BUFFER_SIZE);
 		if (stash[fd] && !line)
 			line = ft_strjoingnl(line, stash[fd]);
-		if (ft_boolstrchr(buffer, '\n') == 1)
-			return (line = ft_strjoingnl(line, buffer), ft_cut4stash(buffer, stash,
-					fd), line = ft_cutline(line, '\n'), free(buffer), line);
-		line = ft_strjoingnl(line, buffer);
+		if (ft_boolstrchr(buff, '\n') == 1)
+			return (line = ft_strjoingnl(line, buff), ft_cut4stash(buff, stash,
+					fd), line = ft_cutline(line, '\n'), free(buff), line);
+		line = ft_strjoingnl(line, buff);
 	}
 	if (bytes == 0)
-		line = ft_update4stash(buffer, stash, line, fd);
+		line = ft_update4stash(buff, stash, line, fd);
 	return (line);
 }

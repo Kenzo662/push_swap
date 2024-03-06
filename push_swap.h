@@ -6,7 +6,7 @@
 /*   By: kenz <kenz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 05:04:10 by kenz              #+#    #+#             */
-/*   Updated: 2024/03/04 05:04:11 by kenz             ###   ########.fr       */
+/*   Updated: 2024/03/05 00:42:05 by kenz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,7 @@ void				rrr(t_data *data, t_lst *lsta, t_lst *lstb);
 
 void				algorithm(t_data *data);
 void				algo_b_to_a(t_data *data);
+int					already_sorted(t_data *data);
 void				calcul_rr(t_data *data, t_lst *lsta, int i);
 int					cut_while(int i, int target, int *tab);
 void				execute_rr(t_data *data, t_lst *lsta, int target_pos);
