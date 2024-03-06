@@ -6,7 +6,7 @@
 /*   By: kenz <kenz@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 02:09:10 by kenz              #+#    #+#             */
-/*   Updated: 2024/03/06 05:25:12 by kenz             ###   ########.fr       */
+/*   Updated: 2024/03/06 21:39:34 by kenz             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int	main(int ac, char **av)
 {
 	t_data	data;
+	char	**tab;
 
 	data.lsta = NULL;
 	data.lstb = NULL;
@@ -22,15 +23,19 @@ int	main(int ac, char **av)
 	{
 		init_data(&data);
 		init_lst_a(av, ac, &data);
+		tab = init_tab(av, ac, &data);
+		check_argv(tab, &data);
 		read_output(&data);
 		if (already_sorted(&data) == 0)
 		{
 			printf("OK\n");
 			freelist(data.lsta);
+			freetab(tab);
 			exit(0);
 		}
 		printf("KO\n");
 		freelist(data.lsta);
+		freetab(tab);
 	}
 }
 
