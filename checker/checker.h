@@ -63,7 +63,7 @@ void				check_output(char *str, t_data *data);
 void				check_av_char(char **tab, t_data *data);
 void				check_argv(char **tab, t_data *data);
 void				freetab(char **tab);
-void				freelist(t_lst *lst);
+void				freelist(t_data *data);
 int					ft_strcmp(char *s1, char *s2);
 void				init_data(t_data *data);
 void				init_lst_a(char **av, int ac, t_data *data);

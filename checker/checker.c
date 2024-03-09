@@ -29,12 +29,12 @@ int	main(int ac, char **av)
 		if (already_sorted(&data) == 0)
 		{
 			printf("OK\n");
-			freelist(data.lsta);
+			freelist(&data);
 			freetab(tab);
 			exit(0);
 		}
 		printf("KO\n");
-		freelist(data.lsta);
+		freelist(&data);
 		freetab(tab);
 	}
 }
@@ -69,29 +69,29 @@ char	*cutline(char *str)
 
 void	check_output(char *str, t_data *data)
 {
-	if (str[0] == 'p' && str[1] == 'b')
+	if (ft_strcmp(str, "pb") == 0)
 		pb(data);
-	else if (str[0] == 'p' && str[1] == 'a')
+	else if (ft_strcmp(str, "pa") == 0)
 		pa(data);
-	else if (str[0] == 'r' && str[1] == 'r' && str[2] == 'a')
+	else if (ft_strcmp(str, "rra") == 0)
 		rra(data, data->lsta);
-	else if (str[0] == 'r' && str[1] == 'r' && str[2] == 'b')
+	else if (ft_strcmp(str, "rrb") == 0)
 		rrb(data, data->lstb);
-	else if (str[0] == 'r' && str[1] == 'r' && str[2] == 'r')
+	else if (ft_strcmp(str, "rrr") == 0)
 		rrr(data, data->lsta, data->lstb);
-	else if (str[0] == 'r' && str[1] == 'a')
+	else if (ft_strcmp(str, "ra") == 0)
 		ra(data);
-	else if (str[0] == 'r' && str[1] == 'b')
+	else if (ft_strcmp(str, "rb") == 0)
 		rb(data);
-	else if (str[0] == 's' && str[1] == 'a')
+	else if (ft_strcmp(str, "sa") == 0)
 		sa(data->lsta);
-	else if (str[0] == 's' && str[1] == 'b')
+	else if (ft_strcmp(str, "sb") == 0)
 		sb(data->lstb);
-	else if (str[0] == 'r' && str[1] == 'r')
+	else if (ft_strcmp(str, "rr") == 0)
 		rr(data);
 	else
 	{
 		ft_printf("Error\n");
-		return (freelist(data->lsta), exit(0));
+		return (freelist(data), exit(0));
 	}
 }

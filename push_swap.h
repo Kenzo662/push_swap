@@ -58,6 +58,7 @@ typedef struct s_data
 
 void				check_argv(char **tab, t_data *data);
 void				check_av_char(char **tab, t_data *data);
+int					check_int(char *str);
 
 t_lst				*define_target(t_data *data, t_lst *lsta);
 t_lst				*define_target_b(t_data *data, t_lst *lstb);
@@ -119,7 +120,7 @@ void				execute_rr(t_data *data, t_lst *lsta, int target_pos);
 int					ft_strcmp(char *s1, char *s2);
 void				freetab(char **tab);
 void				four_argv(t_data *data);
-void				freelist(t_lst *lst);
+void				freelist(t_data *data);
 void				last_move(t_data *data, t_lst *lsta);
 void				set_list_a(t_data *data);
 void				set_list_b(t_data *data);

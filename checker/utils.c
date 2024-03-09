@@ -39,20 +39,6 @@ void	freetab(char **tab)
 	free(tab);
 }
 
-void	freelist(t_lst *lst)
-{
-	t_lst	*next;
-
-	if (!lst)
-		return ;
-	while (lst)
-	{
-		next = lst->next;
-		free(lst);
-		lst = next;
-	}
-}
-
 void	print_all_lst(t_lst *lsta, t_lst *lstb)
 {
 	ft_printf("<------------------------------------>\n");
@@ -80,4 +66,28 @@ void	print_all_lst(t_lst *lsta, t_lst *lstb)
 		lstb = lstb->next;
 	}
 	ft_printf("<------------------------------------>\n");
+}
+
+void	freelist(t_data *data)
+{
+	t_lst	*next;
+
+	if (data->lsta)
+	{
+		while (data->lsta)
+		{
+			next = data->lsta->next;
+			free(data->lsta);
+			data->lsta = next;
+		}
+	}
+	if (data->lstb)
+	{
+		while (data->lstb)
+		{
+			next = data->lstb->next;
+			free(data->lstb);
+			data->lstb = next;
+		}
+	}
 }

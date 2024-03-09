@@ -7,7 +7,7 @@ ft_isascii.c  ft_memmove.c     ft_strdup.c	ft_strnstr.c \
 ft_isdigit.c  ft_memset.c      ft_striteri.c	ft_strrchr.c\
 ft_isprint.c  ft_putchar_fd.c  ft_strjoin.c	ft_strtrim.c \
 ft_printf.c   ft_countnb.c     ft_integer.c \
-gnl.c 		  gnlutils.c \
+gnl.c 		  gnlutils.c	   ft_atol.c \
 
 SRCSBNS = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c\
 ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c

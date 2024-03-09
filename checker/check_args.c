@@ -28,7 +28,7 @@ void	check_argv(char **tab, t_data *data)
 			{
 				ft_printf
 				("Error\n");
-				freelist(data->lsta);
+				freelist(data);
 				freetab(tab);
 				exit(0);
 			}
@@ -53,7 +53,7 @@ void	check_av_char(char **tab, t_data *data)
 			if (ft_isdigit(tab[i][j]) == 0)
 			{
 				ft_printf("Error\n");
-				freelist(data->lsta);
+				freelist(data);
 				freetab(tab);
 				exit(0);
 			}

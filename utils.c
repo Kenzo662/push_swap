@@ -39,17 +39,27 @@ void	freetab(char **tab)
 	free(tab);
 }
 
-void	freelist(t_lst *lst)
+void	freelist(t_data *data)
 {
 	t_lst	*next;
 
-	if (!lst)
-		return ;
-	while (lst)
+	if (data->lsta)
 	{
-		next = lst->next;
-		free(lst);
-		lst = next;
+		while (data->lsta)
+		{
+			next = data->lsta->next;
+			free(data->lsta);
+			data->lsta = next;
+		}
+	}
+	if (data->lstb)
+	{
+		while (data->lstb)
+		{
+			next = data->lstb->next;
+			free(data->lstb);
+			data->lstb = next;
+		}
 	}
 }
 

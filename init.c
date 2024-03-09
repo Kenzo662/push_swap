@@ -37,6 +37,8 @@ void	init_lst_a(char **av, int ac, t_data *data)
 	data->lsta = NULL;
 	while (i < ac)
 	{
+		if (!av[i][0])
+			return (freelist(data), write(2, "Error\n", 6), exit(0));
 		tab = ft_split(av[i], ' ');
 		j = -1;
 		while (tab[++j])

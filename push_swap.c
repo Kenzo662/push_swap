@@ -19,7 +19,7 @@ int	main(int ac, char **av)
 
 	data.lsta = NULL;
 	data.lstb = NULL;
-	if (ac > 2)
+	if (ac >= 2)
 	{
 		init_data(&data);
 		init_lst_a(av, ac, &data);
@@ -28,15 +28,15 @@ int	main(int ac, char **av)
 		if (already_sorted(&data) == 0)
 		{
 			freetab(tab);
-			freelist(data.lsta);
+			freelist(&data);
 			exit(0);
 		}
 		algorithm(&data);
 		freetab(tab);
-		freelist(data.lsta);
+		freelist(&data);
 	}
 	else
-		ft_printf("Besoin d'arguments!\n");
+		write(2, "Error\n", 6);
 }
 
 void	print_all_lst(t_lst *lsta, t_lst *lstb)

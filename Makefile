@@ -13,7 +13,6 @@ all     :   $(NAME)
 
 $(NAME) :   $(OBJ)
 	$(MAKE) -C libft
-	$(MAKE) -C checker
 	$(CC) $(CFLAGS) $(OBJ) -o $(NAME) -L./checker/ -L./libft/ -lft
 clean   :
 	$(MAKE) -C libft fclean
@@ -24,4 +23,5 @@ fclean  :   clean
 	
 re      :   fclean all
 
-.PHONY  :   clean fclean all re
+bonus	:	
+	$(MAKE) -C checker
